@@ -15,6 +15,8 @@ namespace OyunlarWinForms._1_Entities
         public virtual DbSet<Oyun> Oyun { get; set; }
         public virtual DbSet<OyunTur> OyunTur { get; set; }
         public virtual DbSet<Tur> Tur { get; set; }
+        public virtual DbSet<vwOyunRapor> vwOyunRapor { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

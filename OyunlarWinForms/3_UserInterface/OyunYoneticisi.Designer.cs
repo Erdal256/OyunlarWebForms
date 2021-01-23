@@ -31,8 +31,8 @@ namespace OyunlarWinForms._3_UserInterface
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.oyunlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oyunRaporuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uygulamadanÇıkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oyunRaporuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,19 +55,19 @@ namespace OyunlarWinForms._3_UserInterface
             this.oyunlarToolStripMenuItem.Text = "Oyunlar";
             this.oyunlarToolStripMenuItem.Click += new System.EventHandler(this.oyunlarToolStripMenuItem_Click);
             // 
-            // oyunRaporuToolStripMenuItem
-            // 
-            this.oyunRaporuToolStripMenuItem.Name = "oyunRaporuToolStripMenuItem";
-            this.oyunRaporuToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
-            this.oyunRaporuToolStripMenuItem.Text = "Oyun Raporu";
-            this.oyunRaporuToolStripMenuItem.Click += new System.EventHandler(this.oyunRaporuToolStripMenuItem_Click);
-            // 
             // uygulamadanÇıkToolStripMenuItem
             // 
             this.uygulamadanÇıkToolStripMenuItem.Name = "uygulamadanÇıkToolStripMenuItem";
             this.uygulamadanÇıkToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
             this.uygulamadanÇıkToolStripMenuItem.Text = "Uygulamadan Çık";
             this.uygulamadanÇıkToolStripMenuItem.Click += new System.EventHandler(this.uygulamadanÇıkToolStripMenuItem_Click);
+            // 
+            // oyunRaporuToolStripMenuItem
+            // 
+            this.oyunRaporuToolStripMenuItem.Name = "oyunRaporuToolStripMenuItem";
+            this.oyunRaporuToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.oyunRaporuToolStripMenuItem.Text = "Oyun Raporu";
+            this.oyunRaporuToolStripMenuItem.Click += new System.EventHandler(this.oyunRaporuToolStripMenuItem_Click);
             // 
             // OyunYoneticisi
             // 
@@ -81,7 +81,6 @@ namespace OyunlarWinForms._3_UserInterface
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Oyun Yöneticisi";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OyunYoneticisi_FormClosed);
-            this.Load += new System.EventHandler(this.OyunYoneticisi_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

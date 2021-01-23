@@ -63,6 +63,7 @@
     <Compile Include="1_Entities\OyunlarDB.cs" />
     <Compile Include="1_Entities\OyunTur.cs" />
     <Compile Include="1_Entities\Tur.cs" />
+    <Compile Include="1_Entities\vwOyunRapor.cs" />
     <Compile Include="2_Business\Enums\Islem.cs" />
     <Compile Include="2_Business\Models\OyunModel.cs" />
     <Compile Include="2_Business\Models\OyunRaporModel.cs" />

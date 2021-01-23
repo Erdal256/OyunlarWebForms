@@ -65,18 +65,23 @@ namespace OyunlarWinForms._2_Business.Services
 
         public IQueryable<OyunRaporModel> GetQuery()
         {
-            IQueryable<Oyun> oyunQuery = db.Oyun.AsQueryable().OrderBy(o => o.Id); // select * from Oyun order by Id
-            //IQueryable<Oyun> oyunQuery = db.Oyun.AsQueryable();
+            //IQueryable<Oyun> oyunQuery = db.Oyun.AsQueryable().OrderBy(o => o.Id); // select * from Oyun order by Id
+            IQueryable<Oyun> oyunQuery = db.Oyun.AsQueryable();
             IQueryable<OyunTur> oyunTurQuery = db.OyunTur.AsQueryable(); // select * from OyunTur
             IQueryable<Tur> turQuery = db.Tur.AsQueryable(); // select * from Tur
 
+
+            /*
+             * select Oyun.Adi, Oyun.Id, Oyun.Kazanci, Oyun.Maliyeti, Oyun.YilId,                Tur.Id, Tur.Adi               from Oyun                inner join OyunTur on Oyun.Id = OyunTur.OyunId               inner join Tur on OyunTur.TurId = Tur.Id
+
+             
             var query = from oyun in oyunQuery
                         join oyunTur in oyunTurQuery
                             on oyun.Id equals oyunTur.OyunId
                         join tur in turQuery
                             on oyunTur.TurId equals tur.Id
                         //where oyun.Adi == "GTA5"
-                        orderby oyun.Adi
+                        //orderby oyun.Adi
                         select new OyunRaporModel()
                         {
                             Id = oyun.Id,
@@ -87,7 +92,42 @@ namespace OyunlarWinForms._2_Business.Services
                             TurAdi = tur.Adi,
                             TurId = tur.Id
                         };
+            
+             * select Oyun.Adi, Oyun.Id, Oyun.Kazanci, Oyun.Maliyeti, Oyun.YilId,                Tur.Id, Tur.Adi               from Oyun                left outer join OyunTur on Oyun.Id = OyunTur.OyunId               left outer join Tur on OyunTur.TurId = Tur.Id
+
+             */
+            var query = from oyun in oyunQuery
+                        join OyunTur in oyunTurQuery
+                        on oyun.Id equals OyunTur.OyunId into oyun_oyunTur
+                        from sub_oyun_oyunTur in oyun_oyunTur.DefaultIfEmpty()
+                        join tur in turQuery
+                        on sub_oyun_oyunTur.TurId equals tur.Id into oyun_oyunTur_tur
+                        from sub_oyun_oyunTur_tur in oyun_oyunTur_tur.DefaultIfEmpty()
+                        select new OyunRaporModel()
+                        {
+                            Id = oyun.Id,
+                            Adi = oyun.Adi,
+                            Kazanci = oyun.Kazanci,
+                            Maliyeti = oyun.Maliyeti,
+                            YilId = oyun.YilId,
+                            TurAdi = sub_oyun_oyunTur_tur.Adi,
+                            TurId = sub_oyun_oyunTur_tur.Id
+                        };
             return query;
+        }
+        public IQueryable<OyunRaporModel> GetQueryFromView()
+        {
+            IQueryable<vwOyunRapor> vwOyunRaporQuery = db.vwOyunRapor.AsQueryable();
+            return vwOyunRaporQuery.Select(vwOyunRapor => new OyunModel()
+            {
+                Id = vw.Id,
+                Adi = vw.Adi,
+                Kazanci = vw.Kazanci,
+                Maliyeti = vw.Maliyeti,
+                YilId = vw.YilId,
+                TurAdi = vw.Adi,
+                TurId = vw.Id
+            });
         }
 
         public OyunModel GetById(int id)

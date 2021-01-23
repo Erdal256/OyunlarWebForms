@@ -41,10 +41,5 @@ namespace OyunlarWinForms._3_UserInterface
         {
             OyunRaporu form = new OyunRaporu(this);
         }
-
-        private void OyunYoneticisi_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

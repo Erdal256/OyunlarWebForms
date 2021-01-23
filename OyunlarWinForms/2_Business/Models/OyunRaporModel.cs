@@ -20,6 +20,8 @@ namespace OyunlarWinForms._2_Business.Models
 
         [DisplayName("Oyun Türü")]
         public string TurAdi { get; set; }
-        public int TurId { get; set; }
+
+        public int? TurId { get; set; }
+        
     }
 }
